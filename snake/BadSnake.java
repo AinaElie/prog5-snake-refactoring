@@ -4,6 +4,33 @@ import java.util.*;
 import java.io.IOException;
 
 /**
+ * 
+ * SPECS :
+ * Characters :
+ * - Snake
+ * - Food
+ * - Score
+ * - Screen
+ * - Direction
+ * 
+ * Rules :
+ * - Tant que le jeu lancé :
+ *  Si => utilisateur clic sur "a" + entré et direction non "RIGHT" va gauche
+ *  Si => utilisateur clic sur "d" + entré et direction non "LEFT" va droite
+ *  Si => utilisateur clic sur "w" + entré et direction non "DOWN" va haut
+ *  Si => utilisateur clic sur "s" + entré et direction non "UP" va bas
+ *  Si => Sakafo azo, mihalava Score++
+ *  Si => bibilave midona amin'ny vatany/"sisinà screen" à une lapse de temps 
+ *          => mort
+ *          => Game over + show score
+ *          => Reset score/bibilave/position
+ * 
+ * Pattern :
+ * - Observer => Observer direction snake
+ * - Factory => Conrétiser les objets
+ * - State => Snake (isMaty), Sakafo (isLany), Jeu (isTapitra)
+ * - Command => execute (start, change direction)
+ *
  * EXERCICE DE REFACTORING
  *
  * Ce code fonctionne, mais viole de nombreux principes de bonne pratique.
@@ -60,6 +87,7 @@ public class BadSnake {
         int[] f = new int[]{r.nextInt(sh - 2) + 1, r.nextInt(sw - 2) + 1};  // 'f' = food?
 
         String d = "R";
+
         int sc = 0; // Score
 
         while (true) {
